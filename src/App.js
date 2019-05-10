@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+// <<<<<<< victor-ChatForm
 import ChatForm from './ChatForm';
 class App extends React.Component{
   constructor(props){
