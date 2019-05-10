@@ -1,26 +1,38 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ChatForm from './ChatForm';
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      messages:[],
+      text:''
+    }
+  }
+  render() {
+    return (
+      <div className="App">
+        <ChatForm 
+        text={this.state.text}
+        handleChange={this._setText}
+        handleSend={this._sendMessage}
+        />
+      </div>
+    );
+  }
+  _setText =(text)=>{
+    console.log('_setText is called')
+    this.setState({
+      text
+    });
+  }
+  _sendMessage=(messages)=>{
+    console.log('_sendMessage is called')
+    this.setState({
+      messages: this.state.text
+    })
+  }
 }
 
 export default App;
