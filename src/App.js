@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 // <<<<<<< victor-ChatForm
-import ChatForm from './forms/ChatForm'
-import ChatList from './Lists/ChatList'
+import ChatForm from './forms/ChatForm';
+import ChatList from './Lists/ChatList';
+import UserForm from './forms/UserForm';
 
 
 
@@ -11,13 +12,18 @@ class App extends React.Component{
     super(props);
     this.state={
       messages:['hello'],
-      text:''
+      text:'',
+      user:''
     }
   }
   render() {
     return (
       <div className="App">
         <ChatList messages={this.state.messages}/>
+        <UserForm 
+        user={this.state.user}
+        handleChange={this._setUser}
+        />
         <ChatForm 
         text={this.state.text}
         handleChange={this._setText}
@@ -27,10 +33,13 @@ class App extends React.Component{
     );
   }
   _setText =(text)=>{
-    console.log('_setText is called')
-    console.log(text)
     this.setState({
       text
+    });
+  }
+  _setUser=(user)=>{
+    this.setState({
+      user
     });
   }
   _sendMessage=()=>{
@@ -46,6 +55,7 @@ class App extends React.Component{
       text:''
     })
   }
+
 }
 
 export default App;
